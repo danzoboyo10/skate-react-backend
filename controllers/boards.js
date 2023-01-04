@@ -79,14 +79,14 @@ router.post('/bearings', async (req, res) => {
     try {
       const formData = req.body;
   
-      const bearing = await Bearings.create(formData);
+      const bearing = await Bearing.create(formData);
   
       res.status(201).send(bearing);
     } catch (error) {
       res.status(400).send(error.message);
     }
   });
-  
+
 // create basic custom
 
 router.post('/custom', async (req, res) => {
