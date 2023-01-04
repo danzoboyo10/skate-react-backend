@@ -4,7 +4,7 @@ const Board = require('../models/board');
 const finishedBoards = require('../boards.json');
 const Trucks = require('../models/truck');
 const Wheels = require('../models/wheel');
-const Bearings = require('../models/bearing');
+const Bearings = require('../models/Bearing');
 const Build = require('../models/build');
 const Custom = require('../models/custom');
 const Cart = require('../models/cart');
@@ -79,7 +79,7 @@ router.post('/bearings', async (req, res) => {
     try {
       const formData = req.body;
   
-      const bearing = await Bearing.create(formData);
+      const bearing = await Bearings.create(formData);
   
       res.status(201).send(bearing);
     } catch (error) {
