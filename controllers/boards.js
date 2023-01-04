@@ -75,6 +75,22 @@ router.get("/custom", async (req, res) => {
     }
 });
 
+router.post('/bearings', async (req, res) => {
+    try {
+      const bearing = new Bearings({
+        name: req.body.name,
+        image: req.body.image,
+        price: req.body.price
+      });
+  
+      await bearing.save();
+  
+      res.status(201).send(bearing);
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+
 // create basic custom
 
 router.post('/custom', async (req, res) => {
