@@ -69,7 +69,7 @@ router.post('/create', async (req, res) => {
 router.get("/custom", async (req, res) => {
     try {
         const customs = await Custom.find({});
-        res.json(customs);
+    res.json(customs);
     } catch (error) {
         res.status(400).json(error);
     }
@@ -77,20 +77,16 @@ router.get("/custom", async (req, res) => {
 
 router.post('/bearings', async (req, res) => {
     try {
-      const bearing = new Bearings({
-        name: req.body.name,
-        image: req.body.image,
-        price: req.body.price
-      });
+      const formData = req.body;
   
-      await bearing.save();
+      const bearing = await Bearings.create(formData);
   
       res.status(201).send(bearing);
     } catch (error) {
       res.status(400).send(error.message);
     }
   });
-
+  
 // create basic custom
 
 router.post('/custom', async (req, res) => {
